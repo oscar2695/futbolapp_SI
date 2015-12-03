@@ -1,0 +1,52 @@
+<zk>
+	<window title="Edit Employees" border="normal"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zktest.EmployeesVM')">
+		<window title="Employee Editor" border="normal"
+		mode="modal" visible="@load(vm.currentEmployee ne null)">
+			name:<textbox value="@load(vm.currentEmployee.name)  @save(vm.currentEmployee.name, before='save')"></textbox>
+			
+			Department: 
+			
+			<combobox 
+			model="@load(vm.departments)" 
+			
+			selectedItem="@load(vm.currentEmployee.department) @save(vm.currentEmployee.department, before='save')">
+			
+			
+			</combobox>
+			
+			
+			<hbox>
+				<button label="save" onClick="@command('save')"></button>
+				<button label="cancel" onClick="@command('cancel')"></button>
+			</hbox>
+		</window>
+	<groupbox mold="3d" closable="false">
+		<caption label="Employee list">
+			<button label="new" onClick="@command('newEmployee')" />	
+		</caption>	
+		<listbox model="@load(vm.employees)">
+			<listhead>
+				<listheader label="Name"/>
+				<listheader label="Actions"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell>
+						<label value="@load(each.name)"/>
+					</listcell>
+					<listcell>
+						<button label="delete" onClick="@command('delete',employee=each)"></button>
+						<button label="edit" onClick="@command('edit',employee=each)"></button>
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+		
+		count:<label value="@load(vm.count)"></label>
+	</groupbox>
+	</window>
+
+
+</zk>
