@@ -36,9 +36,11 @@ public class LoginVM {
 		currentUser  = em.createQuery("SELECT e FROM User e WHERE e.username = '"+ this.getUsuario() + "'", User.class)
 				.getSingleResult();
 		
-		if(currentUser.getPassword()=="admin"){
-			System.out.println("La contraseña es correcta");
+		if(currentUser.getPassword().equals(currentUser.getPassword())){
+			System.out.println(currentUser.getUsername());
+			System.out.println(currentUser.getPassword());
 		}
+
 		
 	}
 	

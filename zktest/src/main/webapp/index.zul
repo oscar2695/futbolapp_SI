@@ -1,3 +1,59 @@
 <zk>
-<window title="Hello World" border="normal"></window>
+	<window title="Información de partidos" border="normal"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zktest.MatchesVM')">
+		<vbox>
+			<separator height="10px" />
+			<groupbox mold="3d" closable="false">
+				<caption label="Insertar nuevo partido">
+					<button label="+" onClick="@command('newMatch')" />
+				</caption>
+				<listbox model="@load(vm.matches)">
+					<listhead>
+						<listheader label="Equipo Local" />
+						<listheader label="Equipo Visitante" />
+						<listheader label="Goles Local" />
+						<listheader label="Goles Visitante" />
+						<listheader label="Fecha" />
+						<listheader label="Estadio" />
+						<listheader label="Capacidad" />
+						<listheader label="Asistencia" />
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell>
+								<label
+									value="@load(each.nameTeamLocal)" />
+							</listcell>
+							<listcell>
+								<label
+									value="@load(each.nameTeamVisitor)" />
+							</listcell>
+							<listcell>
+								<label value="@load(each.goalsLocal)" />
+							</listcell>
+							<listcell>
+								<label value="@load(each.goalsVisitor)" />
+							</listcell>
+							<listcell>
+								<label value="@load(each.dateMatch)" />
+							</listcell>
+							<listcell>
+								<label value="@load(each.stadium)" />
+							</listcell>
+							<listcell>
+								<label value="@load(each.capacity)" />
+							</listcell>
+							<listcell>
+								<label value="@load(each.spectators)" />
+							</listcell>
+						</listitem>
+					</template>
+				</listbox>
+
+			</groupbox>
+			<separator height="10px" />
+		</vbox>
+	</window>
+
 </zk>

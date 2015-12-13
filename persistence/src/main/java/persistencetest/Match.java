@@ -19,6 +19,7 @@ public class Match {
 	private int goalsVisitor;
 	private Date dateMatch;
 	private String stadium;
+	private int capacity;
 	private int spectators;
 	
 	
@@ -80,6 +81,14 @@ public class Match {
 
 	public void setSpectators(int spectators) {
 		this.spectators = spectators;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
 
 }
