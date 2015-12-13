@@ -18,6 +18,7 @@
 						<listheader label="Estadio" />
 						<listheader label="Capacidad" />
 						<listheader label="Asistencia" />
+						<listheader label="Eliminar" />
 					</listhead>
 					<template name="model">
 						<listitem>
@@ -46,6 +47,11 @@
 							</listcell>
 							<listcell>
 								<label value="@load(each.spectators)" />
+							</listcell>
+							<listcell>
+								<button label="delete"
+									onClick="@command('delete',match=each)">
+								</button>
 							</listcell>
 						</listitem>
 					</template>

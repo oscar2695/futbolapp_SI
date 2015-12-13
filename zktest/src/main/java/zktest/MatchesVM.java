@@ -25,7 +25,7 @@ public class MatchesVM {
 		
 	}
 	
-	/*
+	
 	@Command
 	@NotifyChange("matches")
 	public void delete(@BindingParam("match")Match m){
@@ -33,12 +33,11 @@ public class MatchesVM {
 		TransactionUtil.doTransaction(new Transaction() {
 			@Override
 			public void run(EntityManager em) {
-				List<Match> match = em.createQuery("SELECT m FROM Match_Table m WHERE m.id='"+m.getId()+"'", Match.class).getResultList();
 				em.remove(m);
 			}
 		}, em);
 		
-	}*/
+	}
 	
 	@DependsOn("matches")
 	public int getCount(){
