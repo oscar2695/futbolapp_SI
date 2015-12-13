@@ -18,7 +18,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 			<property name="hibernate.max_fetch_depth" value="3" />
 			<!-- when hibernate starts, what will we do with de tables in de database? 
 				"create", "create- drop", "validate" or "update" -->
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
