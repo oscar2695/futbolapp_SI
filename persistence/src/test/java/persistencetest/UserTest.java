@@ -2,8 +2,6 @@ package persistencetest;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,7 +13,7 @@ import org.junit.Test;
 import persistencetest.util.Transaction;
 import persistencetest.util.TransactionUtil;
 
-public class MatchTest {
+public class UserTest {
 	private static EntityManagerFactory emf;
 
 	@BeforeClass
@@ -29,29 +27,24 @@ public class MatchTest {
 	}
 
 	@Test
-	public void testCreateMatch() {
+	public void testCreateTeam() {
 
 		EntityManager em = emf.createEntityManager();
 
-		Match partido = new Match();
-		partido.setNameTeamLocal("Real Madrid");
-		partido.setNameTeamVisitor("Barcelona");
-		partido.setGoalsLocal(5);
-		partido.setGoalsLocal(1);
-		partido.setDateMatch(new Date());
-		partido.setStadium("Santiago Bernabeu");
-		partido.setSpectators(83563);
+		User usuario = new User();
+		usuario.setUsername("admin");
+		usuario.setPassword("pass");
 		
 		TransactionUtil.doTransaction(new Transaction() {
 			@Override
 			public void run(EntityManager em) {
-				em.persist(partido);
+				em.persist(usuario);
 			}
 		}, em);
 
-		Match partidoRecuperado = em.createQuery("SELECT p FROM Match p WHERE p.nameTeamLocal='Real Madrid'", Match.class)
+		User usuarioRecuperado = em.createQuery("SELECT e FROM User e WHERE e.username = 'admin'", User.class)
 				.getSingleResult();
-		assertEquals("Barcelona", partidoRecuperado.getNameTeamVisitor());
+		assertEquals("admin", usuarioRecuperado.getUsername());
 	}
 
 
