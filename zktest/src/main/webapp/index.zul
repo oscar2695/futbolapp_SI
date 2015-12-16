@@ -1,118 +1,57 @@
 <zk>
-	<window title="Información de partidos" border="normal"
-		apply="org.zkoss.bind.BindComposer"
+	<window width="100%" border="normal"
+		style="background-color: #014B94" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('zktest.MatchesVM')">
-		<window title="Insertar Partido" border="normal"
-		mode="modal" visible="@load(vm.currentMatch ne null)">
-			<vbox>
-
-				<hbox>
-					<vbox width="110px">
-						Equipo Local:
-					</vbox>
-					<vbox width="150px">
-						<combobox id="equipolocalcombo"
-							model="@load(vm.teams)"
-							selectedItem="@load(vm.currentMatch.nameTeamLocal) @save(vm.currentMatch.nameTeamLocal, before='save')">
-						</combobox>
-						<zscript><![CDATA[
-					    import org.zkoss.zul.*;
-					    import persistencetest.*;
-					    equipolocalcombo.setItemRenderer(new ComboitemRenderer(){ 
-					    	void render(item,team,index) {
-					    		item.setLabel(team.getName());
-					    	}
-					    	});					 
-					]]>
-					</zscript>
-					</vbox>
-				</hbox>
-				
-				<hbox>
-				<vbox width="110px">
-					Equipo Visitante:
-				</vbox>
-				<vbox width="150px">
-					<combobox id="equipovisitantecombo" model="@load(vm.teams)"
-					selectedItem="@load(vm.currentMatch.nameTeamVisitor) @save(vm.currentMatch.nameTeamVisitor, before='save')">
-					</combobox>
-					<zscript><![CDATA[
-					    import org.zkoss.zul.*;
-					    import persistencetest.*;
-					    equipovisitantecombo.setItemRenderer(new ComboitemRenderer(){ 
-					    	void render(item,team,index) {
-					    		item.setLabel(team.getName());
-					    	}
-					    	});					 
-					]]>
-					</zscript>
-				</vbox>
-				</hbox>
-				
-				
-				<hbox>
-				<vbox width="110px">
-					Goles Local:
-				</vbox>
-				<vbox width="150px">
-					<intbox constraint="no negative" width="150px" 
-					value="@load(vm.currentMatch.goalsLocal) @save(vm.currentMatch.goalsLocal, before='save')"/>
-				</vbox>
-				</hbox>
-				
-				<hbox>
-				<vbox width="110px">
-					Goles Visitante:
-				</vbox>
-				<vbox width="150px">
-					<intbox constraint="no negative" width="150px"
-					value="@load(vm.currentMatch.goalsVisitor) @save(vm.currentMatch.goalsVisitor, before='save')"/>
-				</vbox>
-				</hbox>
-				
-				
-				<hbox>
-				<vbox width="110px">
-					Fecha:
-				</vbox>
-				<vbox width="150px">
-						<datebox id="db" width="150px"
-						value="@load(vm.currentMatch.dateMatch) @save(vm.currentMatch.dateMatch, before='save')" />
-				</vbox>
-				</hbox>
-				
-				
-				<hbox>
-				<vbox width="110px">
-					Asistencia:
-				</vbox>
-				<vbox width="150px">
-					<intbox constraint="no negative" width="150px"
-					value="@load(vm.currentMatch.spectators) @save(vm.currentMatch.spectators, before='save')"/>
-				</vbox>
-				</hbox>
-			
-			</vbox>
-			<button label="Guardar" onClick="@command('save')"></button>
-			<button label="Cancelar" onClick="@command('cancelMatch')"></button>
+		<window title="Login" border="normal" mode="modal" visible="@load(vm.currentUser ne null)">
+			Usuario:
+			<textbox value="@load(vm.currentUser.username) @save(vm.currentUser.username, before='login')"></textbox>
+			Contraseña:
+			<textbox value="@load(vm.currentUser.password) @save(vm.currentUser.password, before='login')"></textbox>
+			<hbox>
+				<button label="Login" onClick="@command('login')"></button>
+			</hbox>
 		</window>
+		<hbox pack="center" width="100%">
+			<vbox>
+				<image
+					src="C:/Users/miki/Documents/GitHub/futbolapp_SI/image/copaLiga.png" />
+			</vbox>
+			<vbox width="250px"></vbox>
+			<vbox>
+				<image
+					src="C:/Users/miki/Documents/GitHub/futbolapp_SI/image/footballGame.jpg"
+					width="100%" height="100%" />
+			</vbox>
+			<vbox width="250px"></vbox>
+			<vbox>
+				<image
+					src="C:/Users/miki/Documents/GitHub/futbolapp_SI/image/copaLiga.png" />
+			</vbox>
+		</hbox>
 		<vbox>
 			<separator height="10px" />
 			<groupbox mold="3d" closable="false">
-				<caption label="Insertar nuevo partido">
-					<button label="+" onClick="@command('newMatch')" />
+				<caption>
+					<button label="Login" onClick="@command('newUser')" />
 				</caption>
 				<listbox model="@load(vm.matches)">
 					<listhead>
-						<listheader label="Equipo Local" />
-						<listheader label="Equipo Visitante" />
-						<listheader label="Goles Local" />
-						<listheader label="Goles Visitante" />
-						<listheader label="Fecha" />
-						<listheader label="Estadio" />
-						<listheader label="Capacidad" />
-						<listheader label="Asistencia" />
-						<listheader label="Eliminar" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Equipo Local" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Equipo Visitante" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Goles Local" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Goles Visitante" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Fecha" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Estadio" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Capacidad" />
+						<listheader style="color:green;font-size:10pt"
+							align="center" label="Asistencia" />
 					</listhead>
 					<template name="model">
 						<listitem>
@@ -134,12 +73,15 @@
 								<label value="@load(each.dateMatch)" />
 							</listcell>
 							<listcell>
-								<label value="@load(each.spectators)" />
+								<label
+									value="@load(each.teamLocal.stadium.name)" />
 							</listcell>
 							<listcell>
-								<button label="delete"
-									onClick="@command('delete',match=each)">
-								</button>
+								<label
+									value="@load(each.teamLocal.stadium.capacity)" />
+							</listcell>
+							<listcell>
+								<label value="@load(each.spectators)" />
 							</listcell>
 						</listitem>
 					</template>

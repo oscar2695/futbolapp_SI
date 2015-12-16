@@ -33,6 +33,20 @@ public class TeamTest {
 
 		Team equipo = new Team();
 		equipo.setName("Real Madrid");
+		
+		Stadium estadio = new Stadium();
+		estadio.setName("Santiago Bernabeu");
+		estadio.setCapacity(89000);
+		
+		equipo.setStadium(estadio);
+		
+		TransactionUtil.doTransaction(new Transaction() {
+			@Override
+			public void run(EntityManager em) {
+				em.persist(estadio);
+			}
+		}, em);
+		
 		TransactionUtil.doTransaction(new Transaction() {
 			@Override
 			public void run(EntityManager em) {
