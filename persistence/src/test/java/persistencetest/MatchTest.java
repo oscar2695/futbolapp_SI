@@ -34,13 +34,30 @@ public class MatchTest {
 		EntityManager em = emf.createEntityManager();
 
 		Match partido = new Match();
-		partido.setNameTeamLocal("Real Madrid");
-		partido.setNameTeamVisitor("Barcelona");
+		Team equipoLocal = new Team();
+		equipoLocal.setName("Real Madrid");
+		Team equipoVisitante = new Team();
+		equipoVisitante.setName("Barcelona");
+		partido.setTeamLocal(equipoLocal);
+		partido.setTeamVisitor(equipoVisitante);
 		partido.setGoalsLocal(5);
 		partido.setGoalsLocal(1);
 		partido.setDateMatch(new Date());
-		partido.setStadium("Santiago Bernabeu");
 		partido.setSpectators(83563);
+		
+		TransactionUtil.doTransaction(new Transaction() {
+			@Override
+			public void run(EntityManager em) {
+				em.persist(equipoLocal);
+			}
+		}, em);
+		
+		TransactionUtil.doTransaction(new Transaction() {
+			@Override
+			public void run(EntityManager em) {
+				em.persist(equipoVisitante);
+			}
+		}, em);
 		
 		TransactionUtil.doTransaction(new Transaction() {
 			@Override
@@ -49,9 +66,9 @@ public class MatchTest {
 			}
 		}, em);
 
-		Match partidoRecuperado = em.createQuery("SELECT p FROM Match p WHERE p.nameTeamLocal='Real Madrid'", Match.class)
+		Match partidoRecuperado = em.createQuery("SELECT p FROM Match p WHERE p.teamLocal.name='Real Madrid'", Match.class)
 				.getSingleResult();
-		assertEquals("Barcelona", partidoRecuperado.getNameTeamVisitor());
+		assertEquals("Barcelona", partidoRecuperado.getTeamVisitor().getName());
 	}
 
 

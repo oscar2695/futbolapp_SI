@@ -15,9 +15,9 @@ public class Match {
 	@GeneratedValue
 	private int id;
 	@ManyToOne
-	private Team nameTeamLocal;
+	private Team teamLocal;
 	@ManyToOne
-	private Team nameTeamVisitor;
+	private Team teamVisitor;
 	private int goalsLocal; 
 	private int goalsVisitor;
 	private Date dateMatch;
@@ -28,20 +28,20 @@ public class Match {
 		return id;
 	}
 
-	public Team getNameTeamLocal() {
-		return nameTeamLocal;
+	public Team getTeamLocal() {
+		return teamLocal;
 	}
 
-	public void setNameTeamLocal(Team nameTeamLocal) {
-		this.nameTeamLocal = nameTeamLocal;
+	public void setTeamLocal(Team nameTeamLocal) {
+		this.teamLocal = nameTeamLocal;
 	}
 
-	public Team getNameTeamVisitor() {
-		return nameTeamVisitor;
+	public Team getTeamVisitor() {
+		return teamVisitor;
 	}
 
-	public void setNameTeamVisitor(Team nameTeamVisitor) {
-		this.nameTeamVisitor = nameTeamVisitor;
+	public void setTeamVisitor(Team teamVisitor) {
+		this.teamVisitor = teamVisitor;
 	}
 
 	public int getGoalsLocal() {
