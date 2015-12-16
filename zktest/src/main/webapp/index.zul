@@ -118,11 +118,11 @@
 						<listitem>
 							<listcell>
 								<label
-									value="@load(each.nameTeamLocal.name)" />
+									value="@load(each.teamLocal.name)" />
 							</listcell>
 							<listcell>
 								<label
-									value="@load(each.nameTeamVisitor.name)" />
+									value="@load(each.teamVisitor.name)" />
 							</listcell>
 							<listcell>
 								<label value="@load(each.goalsLocal)" />
