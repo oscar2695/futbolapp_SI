@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,13 +14,13 @@ public class Match {
 	@Id
 	@GeneratedValue
 	private int id;
-	private String nameTeamLocal;
-	private String nameTeamVisitor;
+	@ManyToOne
+	private Team nameTeamLocal;
+	@ManyToOne
+	private Team nameTeamVisitor;
 	private int goalsLocal; 
 	private int goalsVisitor;
 	private Date dateMatch;
-	private String stadium;
-	private int capacity;
 	private int spectators;
 	
 	
@@ -27,19 +28,19 @@ public class Match {
 		return id;
 	}
 
-	public String getNameTeamLocal() {
+	public Team getNameTeamLocal() {
 		return nameTeamLocal;
 	}
 
-	public void setNameTeamLocal(String nameTeamLocal) {
+	public void setNameTeamLocal(Team nameTeamLocal) {
 		this.nameTeamLocal = nameTeamLocal;
 	}
 
-	public String getNameTeamVisitor() {
+	public Team getNameTeamVisitor() {
 		return nameTeamVisitor;
 	}
 
-	public void setNameTeamVisitor(String nameTeamVisitor) {
+	public void setNameTeamVisitor(Team nameTeamVisitor) {
 		this.nameTeamVisitor = nameTeamVisitor;
 	}
 
@@ -67,28 +68,12 @@ public class Match {
 		this.dateMatch = dateMatch;
 	}
 
-	public String getStadium() {
-		return stadium;
-	}
-
-	public void setStadium(String stadium) {
-		this.stadium = stadium;
-	}
-
 	public int getSpectators() {
 		return spectators;
 	}
 
 	public void setSpectators(int spectators) {
 		this.spectators = spectators;
-	}
-
-	public int getCapacity() {
-		return capacity;
-	}
-
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
 	}
 
 }

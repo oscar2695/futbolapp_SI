@@ -9,6 +9,7 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.DependsOn;
 import org.zkoss.bind.annotation.NotifyChange;
 import persistencetest.Match;
+import persistencetest.Team;
 import persistencetest.util.Transaction;
 import persistencetest.util.TransactionUtil;
 import zktest.jpa.DesktopEntityManagerManager;
@@ -20,11 +21,13 @@ public class MatchesVM {
 
 	public List<Match> getMatches() {
 		EntityManager em = DesktopEntityManagerManager.getDesktopEntityManager();
-		 return em.createQuery("SELECT e FROM Match e",Match.class).getResultList();
-		
-		
+		 return em.createQuery("SELECT e FROM Match e",Match.class).getResultList();	
 	}
 	
+	public List<Team> getTeams() {
+		EntityManager em = DesktopEntityManagerManager.getDesktopEntityManager();
+		return em.createQuery("select t from Team t",Team.class).getResultList();	
+	}
 	
 	@Command
 	@NotifyChange("matches")
@@ -58,7 +61,7 @@ public class MatchesVM {
 	
 	@Command
 	@NotifyChange("currentMatch")
-	public void cancel(){
+	public void cancelMatch(){
 		this.currentMatch = null;
 	}
 	
@@ -80,7 +83,7 @@ public class MatchesVM {
 	
 	@Command
 	@NotifyChange("currentMatch")
-	public void edit(@BindingParam("match")Match m){
+	public void editMatch(@BindingParam("match")Match m){
 		this.currentMatch = m;
 		this.edit = true;	
 	}

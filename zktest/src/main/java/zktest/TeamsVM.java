@@ -1,6 +1,6 @@
 package zktest;
 
-import java.util.List; 
+import java.util.List;  
 
 import javax.persistence.EntityManager;
 
@@ -36,7 +36,6 @@ public class TeamsVM {
 		return currentTeam;
 	}
 	
-	/*
 	@Command
 	@NotifyChange("currentTeam")
 	public void newTeam(){
@@ -44,16 +43,15 @@ public class TeamsVM {
 		this.edit = false;
 	}
 	
-	*/
 	@Command
 	@NotifyChange("currentTeam")
-	public void cancel(){
+	public void cancelTeam(){
 		this.currentTeam = null;
 	}
 	
 	@Command
-	@NotifyChange({"currentDepartment","departments"})
-	public void save(){
+	@NotifyChange({"currentTeam","teams"})
+	public void saveTeam(){
 		EntityManager em = DesktopEntityManagerManager.getDesktopEntityManager();
 		TransactionUtil.doTransaction(new Transaction() {
 			@Override
@@ -68,8 +66,8 @@ public class TeamsVM {
 	}
 	
 	@Command
-	@NotifyChange("currentTeamt")
-	public void edit(@BindingParam("team")Team t){
+	@NotifyChange("currentTeam")
+	public void editTeam(@BindingParam("team")Team t){
 		this.currentTeam = t;
 		this.edit = true;	
 	}
