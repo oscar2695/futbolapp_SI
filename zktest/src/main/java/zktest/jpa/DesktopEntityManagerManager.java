@@ -10,7 +10,10 @@ import org.zkoss.zk.ui.util.DesktopCleanup;
 public class DesktopEntityManagerManager {
 	private static final String ENTITY_MANAGER_NAME = "__ENTITY_MANAGER__";
 	private static EntityManagerFactory emf = null;
-
+/**
+ * 
+ * @return
+ */
 	public static EntityManager getDesktopEntityManager() {
 		Desktop currentDesktop = Executions.getCurrent().getDesktop();
 		if (currentDesktop != null) {
@@ -31,12 +34,18 @@ public class DesktopEntityManagerManager {
 			throw new IllegalArgumentException("Desktop not found in this execution");
 		}
 	}
-
+/**
+ * 
+ * @return
+ */
 	private static EntityManager createNewEntityMamanger() {
 		EntityManagerFactory emf = getOrCreateEntityManagerFactory();
 		return emf.createEntityManager();
 	}
-
+/**
+ * 
+ * @return
+ */
 	private static EntityManagerFactory getOrCreateEntityManagerFactory() {
 		if (emf != null) {
 			return emf;

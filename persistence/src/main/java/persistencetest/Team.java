@@ -13,31 +13,49 @@ public class Team {
 	
 	@OneToOne
 	private Stadium stadium;
-
+/**
+ * 
+ * @return
+ */
 	public String getName() 
 	{
 		return name;
 	}
-
+/**
+ * 
+ * @param name
+ */
 	public void setName(String name) 
 	{
 		this.name = name;
 	}
-
+/**
+ * 
+ * @return
+ */
 	public int getId() 
 	{
 		return id;
 	}
-	
+	/**
+	 * 
+	 * @param id
+	 */
 	public void setId(int id) 
 	{
 		this.id = id;
 	}
-
+/**
+ * 
+ * @return
+ */
 	public Stadium getStadium() {
 		return stadium;
 	}
-
+/**
+ * 
+ * @param stadium
+ */
 	public void setStadium(Stadium stadium) {
 		this.stadium = stadium;
 	}

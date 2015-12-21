@@ -17,17 +17,23 @@ import persistencetest.util.TransactionUtil;
 
 public class MatchTest {
 	private static EntityManagerFactory emf;
-
+/**
+ * 
+ */
 	@BeforeClass
 	public static void createEntityManagerFactory() {
 		emf = Persistence.createEntityManagerFactory("si-database");
 	}
-
+/**
+ * 
+ */
 	@AfterClass
 	public static void closeEntityManagerFactory() {
 		emf.close();
 	}
-
+/**
+ * 
+ */
 	@Test
 	public void testCreateMatch() {
 
