@@ -7,57 +7,66 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Team {
-	@Id @GeneratedValue 
-	private int id;
-	private String name;
-	
+	@Id
+	@GeneratedValue
+	private int id; // identificador de un equipo
+	private String name; // nombre del equipo
+
 	@OneToOne
-	private Stadium stadium;
-/**
- * 
- * @return
- */
-	public String getName() 
-	{
+	private Stadium stadium;// estadio que posee dicho equipo
+
+	/**
+	 * método observador de name
+	 * 
+	 * @return
+	 */
+	public String getName() {
 		return name;
 	}
-/**
- * 
- * @param name
- */
-	public void setName(String name) 
-	{
+
+	/**
+	 * método modificador de name
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
 		this.name = name;
 	}
-/**
- * 
- * @return
- */
-	public int getId() 
-	{
+
+	/**
+	 * método observador de id
+	 * 
+	 * @return
+	 */
+	public int getId() {
 		return id;
 	}
+
 	/**
+	 * método modficador de id
 	 * 
 	 * @param id
 	 */
-	public void setId(int id) 
-	{
+	public void setId(int id) {
 		this.id = id;
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método observador de statium
+	 * 
+	 * @return
+	 */
 	public Stadium getStadium() {
 		return stadium;
 	}
-/**
- * 
- * @param stadium
- */
+
+	/**
+	 * método modificador de estadium
+	 * 
+	 * @param stadium
+	 */
 	public void setStadium(Stadium stadium) {
 		this.stadium = stadium;
 	}
-	
+
 }

@@ -9,108 +9,133 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="match_table")
+@Table(name = "match_table")
 public class Match {
 	@Id
 	@GeneratedValue
-	private int id;
+	private int id; // identificador de un partido
 	@ManyToOne
-	private Team teamLocal;
+	private Team teamLocal;// Equipo local
 	@ManyToOne
-	private Team teamVisitor;
-	private int goalsLocal; 
-	private int goalsVisitor;
-	private Date dateMatch;
-	private int spectators;
-	
+	private Team teamVisitor;// Equipo visitante
+	private int goalsLocal; // goles del equipo local
+	private int goalsVisitor;// goles del equipo visitante
+	private Date dateMatch;// fecha del partido
+	private int spectators;// número de espactadores que asistieron al partido
+
 	/**
+	 * método observador del id
 	 * 
-	 * @return
+	 * @return int
 	 */
 	public int getId() {
 		return id;
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método observador de teamLocal
+	 * 
+	 * @return Team
+	 */
 	public Team getTeamLocal() {
 		return teamLocal;
 	}
-/**
- * 
- * @param nameTeamLocal
- */
+
+	/**
+	 * método modificador de teamLocal
+	 * 
+	 * @param nameTeamLocal
+	 */
 	public void setTeamLocal(Team nameTeamLocal) {
 		this.teamLocal = nameTeamLocal;
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método observador de teamVisitor
+	 * 
+	 * @return
+	 */
 	public Team getTeamVisitor() {
 		return teamVisitor;
 	}
-/**
- * 
- * @param teamVisitor
- */
+
+	/**
+	 * método modificador de teamVisitor
+	 * 
+	 * @param teamVisitor
+	 */
 	public void setTeamVisitor(Team teamVisitor) {
 		this.teamVisitor = teamVisitor;
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método observador de goalsLocal
+	 * 
+	 * @return
+	 */
 	public int getGoalsLocal() {
 		return goalsLocal;
 	}
-/**
- * 
- * @param goalsLocal
- */
+
+	/**
+	 * método modificador de goalsLocal
+	 * 
+	 * @param goalsLocal
+	 */
 	public void setGoalsLocal(int goalsLocal) {
 		this.goalsLocal = goalsLocal;
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método observador de goalsVisitor
+	 * 
+	 * @return
+	 */
 	public int getGoalsVisitor() {
 		return goalsVisitor;
 	}
-/**
- * 
- * @param goalsVisitor
- */
+
+	/**
+	 * método modificador de goalsVisitor
+	 * 
+	 * @param goalsVisitor
+	 */
 	public void setGoalsVisitor(int goalsVisitor) {
 		this.goalsVisitor = goalsVisitor;
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * mñetodo observador de dateMatch
+	 * 
+	 * @return
+	 */
 	public Date getDateMatch() {
 		return dateMatch;
 	}
-/**
- * 
- * @param dateMatch
- */
+
+	/**
+	 * método modificador de dateMatch
+	 * 
+	 * @param dateMatch
+	 */
 	public void setDateMatch(Date dateMatch) {
 		this.dateMatch = dateMatch;
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método observador de spectators
+	 * 
+	 * @return
+	 */
 	public int getSpectators() {
 		return spectators;
 	}
-/**
- * 
- * @param spectators
- */
+
+	/**
+	 * método modificador de spectators
+	 * 
+	 * @param spectators
+	 */
 	public void setSpectators(int spectators) {
 		this.spectators = spectators;
 	}

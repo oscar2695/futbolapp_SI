@@ -8,12 +8,15 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.util.DesktopCleanup;
 
 public class DesktopEntityManagerManager {
-	private static final String ENTITY_MANAGER_NAME = "__ENTITY_MANAGER__";
-	private static EntityManagerFactory emf = null;
-/**
- * 
- * @return
- */
+	private static final String ENTITY_MANAGER_NAME = "__ENTITY_MANAGER__"; //constante
+	private static EntityManagerFactory emf = null;//entity manager
+
+	/**
+	 * método que devuelve un objeto entity manager la cual permite
+	 * interaccionar con el contexto de persistencia
+	 * 
+	 * @return EntityManager
+	 */
 	public static EntityManager getDesktopEntityManager() {
 		Desktop currentDesktop = Executions.getCurrent().getDesktop();
 		if (currentDesktop != null) {
@@ -34,18 +37,23 @@ public class DesktopEntityManagerManager {
 			throw new IllegalArgumentException("Desktop not found in this execution");
 		}
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método que permite crear un nuevo entityManager
+	 * 
+	 * @return
+	 */
 	private static EntityManager createNewEntityMamanger() {
 		EntityManagerFactory emf = getOrCreateEntityManagerFactory();
 		return emf.createEntityManager();
 	}
-/**
- * 
- * @return
- */
+
+	/**
+	 * método que permite obtener o crear un entityManager, es decir, si no está
+	 * creado, lo crea. Y si ya está creado lo inicia
+	 * 
+	 * @return
+	 */
 	private static EntityManagerFactory getOrCreateEntityManagerFactory() {
 		if (emf != null) {
 			return emf;

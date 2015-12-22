@@ -8,33 +8,40 @@ import javax.persistence.Id;
 public class Stadium {
 	@Id
 	@GeneratedValue
-	private int id;
-	
-	private String name;
-	private int capacity;
-	
+	private int id;// identificador del estadio
+
+	private String name;// nombre del estadio
+	private int capacity; // capacidad del estadio
+
 	/**
+	 * método observador de name
 	 * 
 	 * @return
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
+	 * método modificador de name
 	 * 
 	 * @param name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
+	 * método observador de capacity
 	 * 
 	 * @return
 	 */
 	public int getCapacity() {
 		return capacity;
 	}
+
 	/**
+	 * método modificador de capacity
 	 * 
 	 * @param capacity
 	 */
