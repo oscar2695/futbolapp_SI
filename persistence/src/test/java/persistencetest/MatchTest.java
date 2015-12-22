@@ -18,21 +18,23 @@ import persistencetest.util.TransactionUtil;
 public class MatchTest {
 	private static EntityManagerFactory emf;
 /**
- * 
+ * Antes de realizar los Test se crea el Entity Manager Factory para tener acceso a la base de datos.
  */
 	@BeforeClass
 	public static void createEntityManagerFactory() {
 		emf = Persistence.createEntityManagerFactory("si-database");
 	}
 /**
- * 
+ * Método que cierra el Entity Manager cuando acaban los tests.
  */
 	@AfterClass
 	public static void closeEntityManagerFactory() {
 		emf.close();
 	}
 /**
- * 
+ * Test en el que se prueba el crear de un partido.
+ * Para crear un partido se declara un nuevo partido, dos equipos
+ * Comprueba que el partido que se recoge de la base de datos es el mismo que se acaba de crear.
  */
 	@Test
 	public void testCreateMatch() {
